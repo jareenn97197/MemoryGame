@@ -99,7 +99,7 @@ function createBoard(){                   // function created to make a board wi
             grid.appendChild(card);
 
         }
-        setTimeout(createOne,1000)
+        setTimeout(createOne,5000)
        
 
 
