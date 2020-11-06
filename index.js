@@ -95,6 +95,7 @@ function whenClicked(){
     cardId=[];
     cardChosen=[];
     cardMatches=[];
+    result.textContent=0;
     shuffleArray(cardArray);
     let allImages = document.querySelectorAll('img');
     for(let i=0;i<allImages.length;i++){
@@ -136,15 +137,20 @@ function checkForMatch(){                //check for match function checks if tw
 
     }
     else {
-        if(cardArray.length==0)alert("Oh no you have to  work on your memory");
-        else if(cardArray.length==1)alert("Your memory is better than 5% of the people");
-        else if (cardArray.length==2)alert("Your memory is better than 20% of the people");
-        else if (cardArray.length==3)alert("Your memory is better than 50% of the people ");
-        else if (cardArray.length==4)alert("Excellent your memory is better than 75% of the people");
-        else if (cardArray.length==5)alert("So close to perfect! your memory is better than 99% of the people ");        
+        if(cardMatches.length===0)alert("You can do better");
+        else if(cardMatches.length===1)alert("Nice Your memory is better than 5% of the people");
+        else if (cardMatches.length==2)alert("Great Your memory is better than 20% of the people");
+        else if (cardMatches.length==3)alert("Awesome Your memory is better than 50% of the people ");
+        else if (cardMatches.length==4)alert("Excellent your memory is better than 75% of the people");
+        else if (cardMatches.length==5)alert("So close to perfect! your memory is better than 99% of the people ");        
         result.textContent=0;
+        st=new Set();
+        cardId=[];
+        cardChosen=[];
+        cardMatches=[]
         shuffleArray(cardArray);
         createOne();
+      ;
     }
     if(cardMatches.length==cardArray.length/2){
         alert("Your Memory power is better than 100% of the people");   
@@ -195,4 +201,3 @@ function flipcard(){                // Creating a function when a user click on 
 
 
 });
-
