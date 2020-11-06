@@ -70,6 +70,8 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
 
     ]
+const button=document.querySelector('#button');
+button.addEventListener('click',whenClicked);
 
 shuffleArray(cardArray);
 const grid=document.querySelector('.grid');
@@ -87,6 +89,18 @@ function createOne(){
     for(let i=0;i<allImages.length;i++){
         allImages[i].setAttribute('src','./images/blank.png');
     }
+}
+function whenClicked(){
+    st=new Set();
+    cardId=[];
+    cardChosen=[];
+    cardMatches=[];
+    let allImages = document.querySelectorAll('img');
+    for(let i=0;i<allImages.length;i++){
+        allImages[i].setAttribute('src',cardArray[i].img);
+    }
+    setTimeout(createOne,5000)
+    
 }
 
 function createBoard(){                   // function created to make a board with the reapeated images
@@ -116,28 +130,19 @@ function checkForMatch(){                //check for match function checks if tw
         cardMatches.push(1);
         st.add(cardId[0]);
         st.add(cardId[1]);
-        alert("Hurray! you found a match");
+     
         result.textContent=cardMatches.length;
 
     }
-    else{
-        allImages[cardId[0]].setAttribute('src','./Images/blank.png');
-        allImages[cardId[1]].setAttribute('src','./Images/blank.png');
-        st.delete(cardId[0]);
-        st.delete(cardId[1]);
-     
-        alert("sorry better luck next time ");
-    }
-
-    if(cardMatches.length==cardArray.length/2){
-        alert("You found all the matches. play again by refreshing the tab ");
-        for(let i=0;i<allImages.length;i++){
-            allImages[i].setAttribute('src','./Images/blank.png');
-        }
+    else {
+        alert("Sorry you lost the game your score is "+result.textContent+" try again by clicking the restart button")
+        result.textContent=0;
         shuffleArray(cardArray);
-       st =new Set();
-       result.textContent=0;
+        createOne();
     }
+   
+
+  
 
     cardId=[];
     cardChosen=[];
