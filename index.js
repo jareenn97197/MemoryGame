@@ -95,6 +95,7 @@ function whenClicked(){
     cardId=[];
     cardChosen=[];
     cardMatches=[];
+    shuffleArray(cardArray);
     let allImages = document.querySelectorAll('img');
     for(let i=0;i<allImages.length;i++){
         allImages[i].setAttribute('src',cardArray[i].img);
@@ -130,12 +131,23 @@ function checkForMatch(){                //check for match function checks if tw
         cardMatches.push(1);
         st.add(cardId[0]);
         st.add(cardId[1]);
-     
+
         result.textContent=cardMatches.length;
 
     }
     else {
-        alert("Sorry you lost the game your score is "+result.textContent+" try again by clicking the restart button")
+        if(cardArray.length==0)alert("Oh no you have to  work on your memory");
+        else if(cardArray.length==1)alert("Your memory is better than 5% of the people");
+        else if (cardArray.length==2)alert("Your memory is better than 20% of the people");
+        else if (cardArray.length==3)alert("Your memory is better than 50% of the people ");
+        else if (cardArray.length==4)alert("Excellent your memory is better than 75% of the people");
+        else if (cardArray.length==5)alert("So close to perfect! your memory is better than 99% of the people ");        
+        result.textContent=0;
+        shuffleArray(cardArray);
+        createOne();
+    }
+    if(cardMatches.length==cardArray.length/2){
+        alert("Your Memory power is better than 100% of the people");   
         result.textContent=0;
         shuffleArray(cardArray);
         createOne();
